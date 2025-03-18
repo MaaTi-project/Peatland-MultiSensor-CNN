@@ -26,13 +26,13 @@ data, and multi-source national forest inventory (MS-NFI) datasets.
 
 ### Clone this Repo
 ```bash
-git clone https://github.com/MaaTi/CNN_peatland
-cd MaaTi/CNN_peatland
+git clone https://github.com/MaaTi-project/Peatland-MultiSensor-CNN.git
+cd Peatland-MultiSensor-CNN
 ```
 ### Creat the Conda environment 
 ```bash
 # move to requirement folder
-cd /<ROOT FOLDER>/CNN_peatland/Requirements
+cd /<ROOT FOLDER>/Peatland-MultiSensor-CNN/Requirements
 conda env create -f install_me.yml
 ```
 
@@ -52,7 +52,7 @@ sizes, so we assume a grid unification has been done (e.g. using bilinear interp
 
 ```bash
 # move to requirement folder
-cd /<ROOT FOLDER>/CNN_peatland/CreateSyntheticData
+cd /<ROOT FOLDER>/Peatland-MultiSensor-CNN/CreateSyntheticData
 
 # write to create synthethic raster  and no data raster(random generated)
 python create_synthethic_rasters.py 
@@ -68,7 +68,7 @@ The master file is a summary file that contains the paths of raster datasets, sp
 
 ```bash
 # move to requirement folder
-cd /<ROOT FOLDER>/CNN_peatland/CreateSyntheticData
+cd /<ROOT FOLDER>/Peatland-MultiSensor-CNN/CreateSyntheticData
 
 # write to generate a master file to handle pathes of raster for other steps 
 python create_masterfile.py
@@ -90,7 +90,7 @@ In this step the algorithm will create a windows with the annoation point in the
 
 ```bash
 # navigate to 
-cd /<ROOT FOLDER>/CNN_peatland/ManageDataset
+cd /<ROOT FOLDER>/Peatland-MultiSensor-CNN/ManageDataset
 # For linux user
 source create_windows.sh
 
@@ -108,7 +108,7 @@ or
 
 ```bash
 # List files in a directory
-cd /<ROOT FOLDER>/CNN_peatland/ManageDataset
+cd /<ROOT FOLDER>/Peatland-MultiSensor-CNN/ManageDataset
 
 # from prompt 
 python create_dataset.py -area name_of_your_zone \
@@ -147,7 +147,7 @@ The feature selection process consists of two stages. In the first stage, the al
 
 ```bash
 # navigate to 
-cd /<ROOT FOLDER>/CNN_peatland/FeatureSelection
+cd /<ROOT FOLDER>/Peatland-MultiSensor-CNN/FeatureSelection
 
 # For linux user
 source input_selection.sh 
@@ -169,7 +169,7 @@ or
 
 ```bash
 # navigate to 
-cd /<ROOT FOLDER>/CNN_peatland/FeatureSelection
+cd /<ROOT FOLDER>/Peatland-MultiSensor-CNN/FeatureSelection
 
 # run 
 
@@ -260,7 +260,7 @@ In the next step the greedy forward feature selection is started:
 
 ```bash
 # navigate to 
-cd /<ROOT FOLDER>/CNN_peatland/InputSelection
+cd /<ROOT FOLDER>/Peatland-MultiSensor-CNN/InputSelection
 
 # For linux user
 source input_selection.sh 
@@ -280,7 +280,7 @@ or
 
 ```bash
 # navigate to 
-cd /<ROOT FOLDER>/CNN_peatland/InputSelection
+cd /<ROOT FOLDER>/Peatland-MultiSensor-CNN/InputSelection
 
 python input_selection_second_stage.py -area name_of_your_zone \
                                        -types type of data you want to analyse 
@@ -454,7 +454,7 @@ The resulted best combination is given by the one that achieves best accuracy.
 
 ```bash
 # navigate to 
-cd /<ROOT FOLDER>/CNN_peatland/TrainBestCombination
+cd /<ROOT FOLDER>/Peatland-MultiSensor-CNN/TrainBestCombination
 
 # type
 source train_best_combination.sh 
@@ -470,7 +470,7 @@ or
 
 ```bash
 # navigate to 
-cd /<ROOT FOLDER>/CNN_peatland/TrainBestCombination
+cd /<ROOT FOLDER>/Peatland-MultiSensor-CNN/TrainBestCombination
 
 # run 
 python train_best_combination.py -area name_of_your_zone \
@@ -506,7 +506,7 @@ In this phases the raster is divided into smaller subrater in order to make comp
 
 ```bash
 # navigate to 
-cd /<ROOT FOLDER>/CNN_peatland/PixelWiseClassification
+cd /<ROOT FOLDER>/Peatland-MultiSensor-CNN/PixelWiseClassification
 
 #run 
 source prepare_the_command.sh
@@ -529,7 +529,7 @@ or
 
 ```bash
 # navigate to 
-cd /<ROOT FOLDER>/CNN_peatland/PixelWiseClassification
+cd /<ROOT FOLDER>/Peatland-MultiSensor-CNN/PixelWiseClassification
 
 python pixelwise_classification_create_commands.py -area Zone name of the analysis \
                                                    --opix Override the current spatial resolution \
@@ -562,14 +562,14 @@ Parameters list:
   </tr>
 </table>
 
-The generated list of commands is saved into the ``` /<ROOT FOLDER>/CNN_peatland/PixelWiseClassification/launch_commander/launch_commander_AREA_NAME.txt ``` folder. 
+The generated list of commands is saved into the ``` /<ROOT FOLDER>/Peatland-MultiSensor-CNN/PixelWiseClassification/launch_commander/launch_commander_AREA_NAME.txt ``` folder. 
 
 
 ## Classification map generation
 
 ```bash
 # navigate to 
-cd /<ROOT FOLDER>/CNN_peatland/PixelWiseClassification
+cd /<ROOT FOLDER>/Peatland-MultiSensor-CNN/PixelWiseClassification
 
 source run_pixelwise_classification.sh
 
@@ -582,7 +582,7 @@ Reply -> PixelWiseClassification/launch_commander/launch_commander_testarea.txt
 
 ```bash
 # navigate to 
-cd /<ROOT FOLDER>/CNN_peatland/Rebuilt
+cd /<ROOT FOLDER>/Peatland-MultiSensor-CNN/Rebuilt
 
 python create_array_from_workers.py -folder output folder of the pixelwise classification step.
 ```
@@ -600,13 +600,13 @@ Parameters list:
   </tr>
 </table>
 
-The output will be saved into the ``` /<ROOT FOLDER>/CNN_peatland/Rebuilt/saved_array ```.
+The output will be saved into the ``` /<ROOT FOLDER>/Peatland-MultiSensor-CNN/Rebuilt/saved_array ```.
 
 In the same folder create a raster from the rebuilt array:
 
 ```bash
 # navigate to 
-cd /<ROOT FOLDER>/CNN_peatland/Rebuilt
+cd /<ROOT FOLDER>/Peatland-MultiSensor-CNN/Rebuilt
 
 python create_raster_from_array.py.
 ```
